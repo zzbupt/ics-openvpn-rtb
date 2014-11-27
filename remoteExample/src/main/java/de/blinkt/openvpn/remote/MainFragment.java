@@ -69,7 +69,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Hand
     private void startEmbeddedProfile()
     {
         try {
-            InputStream conf = getActivity().getAssets().open("test.conf");
+            InputStream conf = getActivity().getAssets().open("hd.conf");
             InputStreamReader isr = new InputStreamReader(conf);
             BufferedReader br = new BufferedReader(isr);
             String config="";
@@ -159,8 +159,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Hand
     private String mStartUUID=null;
 
     private void bindService() {
-        getActivity().bindService(new Intent(IOpenVPNAPIService.class.getName()),
-                mConnection, Context.BIND_AUTO_CREATE);
+        ServiceConnection hey;
+        hey = mConnection;
+        getActivity().bindService(new Intent(IOpenVPNAPIService.class.getName()), mConnection, Context.BIND_AUTO_CREATE);
     }
 
     protected void listVPNs() {
